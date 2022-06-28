@@ -1,0 +1,22 @@
+<div class='container m-5'>
+  <h1>Registered products table</h1>
+  <table class='table table-primary table-striped'>
+    <thead>
+      <tr>
+        <th scope='col'>Product name</th>
+        <th scope='col'>Price</th>
+        <th scope='col'>Thumbnail</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products}}
+        <tr>
+          <td class='prodTitle'>{{this.title}}</td>
+          <td class='prodPrice'>{{this.price}}</td>
+          <td><img alt='📷' class='prodThumbnail' src={{this.thumbnail}} /></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <a href="/" class="btn btn-lg btn-info" role="button"><i class="bi-house-fill"></i>Home</a>
+</div>

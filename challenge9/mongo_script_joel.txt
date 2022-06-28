@@ -1,0 +1,60 @@
+use ecommerce
+db.createCollection("products")
+db.createCollection("messages")
+
+db.products.insert(
+    [
+        {product: "product1", price: 50}, 
+        {product: "product2", price: 250}, 
+        {product: "product3", price: 1250}, 
+        {product: "product4", price: 2500}, 
+        {product: "product5", price: 3750}, 
+        {product: "product6", price: 4500}, 
+        {product: "product7", price: 5250}, 
+        {product: "product8", price: 6000}, 
+        {product: "product9", price: 7200}, 
+        {product: "product10", price: 8742}
+    ]
+)
+
+db.messages.insert(
+    [
+        {user:"Joel", message: "Hi", timeStamp: ISODate()},
+        {user:"Michael", message: "Hi", timeStamp: ISODate()},
+        {user:"Rose", message: "Hi", timeStamp: ISODate()},
+        {user:"Alex", message: "Hi", timeStamp: ISODate()},
+        {user:"Mary", message: "Hi", timeStamp: ISODate()},
+        {user:"Rachel", message: "Hi", timeStamp: ISODate()},
+        {user:"Yoda", message: "Hi", timeStamp: ISODate()},
+        {user:"Elon", message: "Hi", timeStamp: ISODate()},
+        {user:"Steve", message: "Hi", timeStamp: ISODate()},
+        {user:"Jon", message: "Hi", timeStamp: ISODate()}
+    ]
+)
+
+db.products.find()
+db.messages.find()
+
+db.products.count()
+db.messages.count()
+
+db.products.insert({product: "product11", price: 1100})
+db.products.find({price: {$lt: 1000}})
+db.products.find({$and:[{price: {$gte: 1000}},{price: {$lte: 3000}}]})
+db.products.find({price:{$gt: 3000}})
+db.products.find({},{product: 1}).sort({price:1}).skip(2).limit(1)
+
+db.products.updateMany({},{$set: {stock: 100}})
+
+db.products.updateMany({price:{$gt: 4000}}, {$set: {stock: 0}})
+
+db.products.deleteMany({price:{$lt: 1000}})
+
+use admin
+db.createUser({
+    user: "pepe",
+    pwd: "asd456",
+    roles: [
+        { role: "read", db: "ecommerce" }
+    ]
+})

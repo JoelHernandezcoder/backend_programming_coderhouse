@@ -1,0 +1,39 @@
+<div class='container m-5'>
+  <h1>Upload Products ⬆</h1>
+  <form action='/products' method='POST'>
+    <div class='input-group m-3'>
+      <span class='input-group-text'>Title: </span>
+      <input
+        type='text'
+        class='form-control'
+        placeholder='Title'
+        name='title'
+      />
+    </div>
+    <div class='input-group m-3'>
+      <span class='input-group-text'>Price: </span>
+      <input
+        type='number'
+        class='form-control'
+        placeholder='Price'
+        name='price'
+      />
+    </div>
+    <div class='input-group m-3'>
+      <span class='input-group-text'>URL Thumbnail </span>
+      <input
+        type='text'
+        class='form-control'
+        placeholder='URL'
+        name='thumbnail'
+        id='url'
+      />
+    </div>
+    <button class='btn btn-success m-3' type='submit'><i
+        class='bi bi-arrow-up-circle'
+      ></i>Upload</button>
+    <a href='/products' class='btn btn-info m-3' role='button'><i
+        class='bi bi-list'
+      ></i>List of products</a>
+  </form>
+</div>

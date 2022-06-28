@@ -1,0 +1,30 @@
+h1 {
+  color: blue;
+  font-size: 22px;
+  text-align: center;
+}
+
+.prodTitle {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.prodPrice {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  font-size: 32px;
+  font-weight: bolder;
+}
+
+.prodThumbnail {
+  width: 100px;
+}
+
+table,
+th,
+tr,
+td {
+  vertical-align: middle;
+}

@@ -1,0 +1,37 @@
+<hr />
+<div class='container mx-5'>
+  <h4>Ask us by chat</h4>
+  <p id='msg'></p>
+  <div class='row align-items-center'>
+    <div class='col-sm-3 col-md-auto'>
+      <label for='user' class='form-label'>Name: </label>
+    </div>
+    <div class='col-sm-9 col-md-auto'>
+      <input type='text' class='form-control' id='user' placeholder='Name' />
+    </div>
+    <div class='col-sm-3 col-md-auto'>
+      <label for='mail' class='form-label'>Mail</label>
+    </div>
+    <div class='col-sm-9 col-md-auto'>
+      <input type='email' class='form-control' id='mail' placeholder='E-Mail' />
+    </div>
+    <div class='col-sm-3 col-md-auto'>
+      <label for='text' class='form-label'>Message: </label>
+    </div>
+    <div class='col-sm-p col-md-auto'>
+      <input
+        type='text'
+        class='form-control'
+        id='message'
+        placeholder='Message'
+      />
+    </div>
+    <div class='col-auto'>
+      <button class='btn btn-success m-3' onclick='send()'><i
+          class='bi bi-send'
+        ></i>Send</button>
+    </div>
+  </div>
+  <h5 class='m-3'>Messages</h5>
+  <div class='m-3' id='msgs'></div>
+</div>
