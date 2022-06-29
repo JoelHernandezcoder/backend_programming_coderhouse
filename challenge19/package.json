@@ -1,0 +1,35 @@
+{
+  "name": "final_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon --inspect ./app.js 8080",
+    "cluster": "node ./cluster.js 8081",
+    "pm2": "pm2 start ./pm2.cjs",
+    "4ever": "forever start ./app.js 8085",
+    "start": "nodemon --inspect ./app.js 8080",
+    "prof": "node --prof ./app.js 8080",
+    "artillery": "artillery quick --count 500 -n 200 \"http://localhost:8080/api/info\" > result_artillery.txt",  
+    "readProf": "node --prof-process result.log > result-prof.txt",
+    "0x": "0x ./app.js 8080",
+    "test": "node ./utils/test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^12.0.4",
+    "express": "^4.17.2",
+    "minimist": "^1.2.6",
+    "mongoose": "^6.3.0",
+    "uuid": "^8.3.2",
+    "web-vitals": "^1.1.2",
+    "winston": "^3.7.2",
+    "winston-levelonly": "^1.0.3",
+    "compression": "^1.7.4",
+    "autocannon": "^7.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.13.0"
+  }
+}
