@@ -1,0 +1,37 @@
+[
+  {
+    "name": "GeForce RTX™ 3090 24G",
+    "description": "description",
+    "photo": "https://www.gigabyte.com/FileUpload/Global/WebPage/686/img/3.png",
+    "price": 3650,
+    "stock": 10
+  },
+  {
+    "name": "GeForce RTX™ 3080 Ti 12G",
+    "description": "description",
+    "photo": "https://www.gigabyte.com/FileUpload/Global/WebPage/851/img/2.png",
+    "price": 2460,
+    "stock": 15
+  },
+  {
+    "name": "GeForce RTX™ 3080 10G",
+    "description": "description",
+    "photo": "https://www.gigabyte.com/FileUpload/Global/WebPage/857/img/5.png",
+    "price": 699,
+    "stock": 20
+  },
+  {
+    "name": "GeForce RTX™ 3070 ti 8G",
+    "description": "description",
+    "photo": "https://www.gigabyte.com/FileUpload/Global/WebPage/825/img/1.png",
+    "price": 600,
+    "stock": 40
+  },
+  {
+    "name": "GeForce RTX™ 3060 ti 8G",
+    "description": "description",
+    "photo": "https://static.gigabyte.com/StaticFile/Image/Global/3bd619bce64978795e2a69f835dd6079/Product/26734/webp/1000",
+    "price": 400,
+    "stock": 60
+  }
+]
