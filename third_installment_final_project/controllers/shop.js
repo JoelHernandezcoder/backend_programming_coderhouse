@@ -274,7 +274,7 @@ exports.getInvoice = (req, res, next) => {
         return next(new Error('No order Found'));
       }
       if (order.user.userId.toString() !== req.user._id.toString()) {
-        return next(new Error('Unatherized Acess'));
+        return next(new Error('Unauthorized Access'));
       }
 
       const invoicePdf = new pdfkit();

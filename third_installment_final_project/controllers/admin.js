@@ -22,7 +22,7 @@ exports.postAddProduct = (req, res, next) => {
     return res.status(422).render('admin/edit-product', {
       title: 'Add Product',
       path: '/admin/add-product',
-      errorMessage: 'The file type is not supported',
+      errorMessage: 'The file type is not supported ❌',
       validationErrors: [],
       hasErrors: true,
       product: {
@@ -61,7 +61,7 @@ exports.postAddProduct = (req, res, next) => {
   product
     .save()
     .then(() => {
-      console.log('Product created Sucessfully!!');
+      console.log('Product created successfully 👍');
       res.redirect('/admin/products');
     })
     .catch((err) => {
@@ -126,7 +126,7 @@ exports.postEditProduct = (req, res, next) => {
   Product.findOne({ _id: productId, userId: req.user._id })
     .then((product) => {
       if (!product) {
-        return next(new Error('No Product Found'));
+        return next(new Error('No product found 😢'));
       }
       product.title = title;
       product.price = price;
@@ -137,7 +137,7 @@ exports.postEditProduct = (req, res, next) => {
         product.imageUrl = '/' + image.path;
       }
       return product.save().then(() => {
-        console.log('Product Updated Sucessfully');
+        console.log('Product updated successfully 👍');
         res.redirect('/admin/products');
       });
     })
@@ -170,20 +170,20 @@ exports.deleteProduct = (req, res, next) => {
   Product.findOne({ _id: productId, userId: req.user._id })
     .then((product) => {
       if (!product) {
-        throw new Error('No Product found');
+        throw new Error('No product found 😢');
       }
       fileHandler.deletefile(product.imageUrl.substring(1));
       return Product.deleteOne({ _id: productId, userId: req.user._id });
     })
     .then(() => {
-      console.log('Product Deleted Sucessfully');
+      console.log('Product deleted successfully 👍');
       res.status(200).json({
-        message: '[OK] Product Deleted Sucessfully!',
+        message: '[OK] Product deleted successfully 👍',
       });
     })
     .catch((err) => {
       res.status(500).json({
-        message: '[ERROR] Product Deletion Failed!',
+        message: '[ERROR] Product deletion failed ❌',
       });
     });
 };

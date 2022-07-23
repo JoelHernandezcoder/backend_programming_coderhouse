@@ -9,7 +9,7 @@ block content
 		div.image
 			- let imageUrl = product.imageUrl
 			img(src=imageUrl, alt="Product Title")
-		h2 #{ product.price }
+		h2 $ #{ product.price }
 		p(style="padding: 0 5em") #{ product.description }
 
 		if isAuthanticated

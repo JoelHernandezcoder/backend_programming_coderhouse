@@ -15,12 +15,12 @@ html(lang="en")
 	body
 		.backdrop
 		header.main-header
-			button#side-menu-toggle Menu
+			button#side-menu-toggle ☰
 			nav.main-header__nav
 				ul.main-header__item-list
 
 					li.main-header__item
-						a(href="/", class=(path==='/' ? 'active' : '' )) Shop
+						a(href="/", class=(path==='/' ? 'active' : '' )) Shop 🎮
 
 					//- li.main-header__item
 					//- 	a(href="/products", class=(path==='/products' ? 'active' : '' )) Products
@@ -28,27 +28,27 @@ html(lang="en")
 					-var isAuthanticated = isAuthanticated
 					if isAuthanticated
 						li.main-header__item
-							a(href="/cart", class=(path==='/cart' ? 'active' : '' )) Cart
+							a(href="/cart", class=(path==='/cart' ? 'active' : '' )) Cart 🛒
 
 						li.main-header__item
-							a(href="/orders", class=(path==='/orders' ? 'active' : '' )) Orders
+							a(href="/orders", class=(path==='/orders' ? 'active' : '' )) Orders 📦
 
 
 				ul.main-header__item-list
 					if isAuthanticated
 						li.main-header__item
-							a(href="/admin/add-product", class=(path==='/admin/add-product' ? 'active' : '' )) Add Product
+							a(href="/admin/add-product", class=(path==='/admin/add-product' ? 'active' : '' )) Add Product 👷
 
 						li.main-header__item
-							a(href="/admin/products", class=(path==='/admin/products' ? 'active' : '' )) Admin Product
+							a(href="/admin/products", class=(path==='/admin/products' ? 'active' : '' )) Admin Product 😎
 						li.main-header__item
 							form(action="/logout", method="post")
-								button(type="submit") Logout
+								button(type="submit") Logout 👋
 					else
 						li.main-header__item
-							a(href="/login", class=(path==='/login' ? 'active' : '' )) Login
+							a(href="/login", class=(path==='/login' ? 'active' : '' )) Login 😉
 						li.main-header__item
-							a(href="/signup", class=(path==='/sighup' ? 'active' : '' )) Sign Up
+							a(href="/signup", class=(path==='/signup' ? 'active' : '' )) Sign Up 😁
 
 
 
@@ -78,14 +78,12 @@ html(lang="en")
 							a(href="/admin/products", class=(path==='/admin/products' ? 'active' : '' )) Admin Product
 						li.main-header__item
 							form(action="/logout", method="post")
-								- csrfToken = csrfToken
-								input(type="hidden", name="_csrf", value=csrfToken)
 								button(type="submit") Logout
 					else
 						li.main-header__item
 							a(href="/login", class=(path==='/login' ? 'active' : '' )) Login
 						li.main-header__item
-							a(href="/signup", class=(path==='/sighup' ? 'active' : '' )) Sign Up
+							a(href="/signup", class=(path==='/signup' ? 'active' : '' )) Sign Up
 
 		block content
 

@@ -18,14 +18,14 @@ exports.getLogin = (req, res) => {
   let errorMessage = req.flash('error');
   errorMessage = errorMessage.length > 0 ? errorMessage[0] : undefined;
 
-  let sucessMessage = req.flash('sucess');
-  sucessMessage = sucessMessage.length > 0 ? sucessMessage[0] : undefined;
+  let successMessage = req.flash('success');
+  successMessage = successMessage.length > 0 ? successMessage[0] : undefined;
 
   res.render('auth/login', {
     path: '/login',
     title: 'Login',
     errorMessage: errorMessage,
-    sucessMessage: sucessMessage,
+    successMessage: successMessage,
     oldInput: {
       email: '',
       password: '',
@@ -60,7 +60,7 @@ exports.postLogin = (req, res, next) => {
       path: '/login',
       title: 'Login',
       errorMessage: errors.array()[0].msg,
-      sucessMessage: undefined,
+      successMessage: undefined,
       oldInput: {
         email: email,
         password: password,
@@ -75,8 +75,8 @@ exports.postLogin = (req, res, next) => {
         return res.status(422).render('auth/login', {
           path: '/login',
           title: 'Login',
-          errorMessage: 'Invalid Email or Password',
-          sucessMessage: undefined,
+          errorMessage: 'Invalid email or password ❌',
+          successMessage: undefined,
           oldInput: {
             email: email,
             password: password,
@@ -100,8 +100,8 @@ exports.postLogin = (req, res, next) => {
           return res.status(422).render('auth/login', {
             path: '/login',
             title: 'Login',
-            errorMessage: 'Invalid Email or Password',
-            sucessMessage: null,
+            errorMessage: 'Invalid email or password ❌',
+            successMessage: null,
             oldInput: {
               email: email,
               password: password,
@@ -113,8 +113,8 @@ exports.postLogin = (req, res, next) => {
           return res.status(500).render('auth/login', {
             path: '/login',
             title: 'Login',
-            errorMessage: 'Somthing Went Wrong :( Try again later!!',
-            sucessMessage: null,
+            errorMessage: 'Something went wrong. Try again later 😢',
+            successMessage: null,
             oldInput: {
               email: email,
               password: password,
@@ -161,20 +161,20 @@ exports.postSignup = (req, res) => {
       return newUser.save();
     })
     .then(() => {
-      req.flash('sucess', 'Account Created Sucessfully!!');
+      req.flash('success', 'Account created successfully 🚀');
       res.redirect('/login');
 
       const mailOptions = {
-        from: 'nodeshopdevil08@gmail.com',
+        from: 'joelhernandezarg@gmail.com',
         to: email,
-        subject: 'Sign Up sucessfully',
-        html: '<h1>Sign Up sucessfully!!!</h1>',
+        subject: 'Sign Up successfully',
+        html: '<h1>Congratulations, you signed up successfully 🚀</h1>',
       };
 
       transporter
         .sendMail(mailOptions)
         .then(() => {
-          console.log('Mail send sucessfully');
+          console.log('Mail send successfully 👍');
         })
         .catch((err) => {
           throw err;
@@ -184,7 +184,7 @@ exports.postSignup = (req, res) => {
       return res.status(422).render('auth/signup', {
         path: '/signup',
         title: 'Sign Up',
-        errorMessage: 'Somthing Went Wrong!!',
+        errorMessage: 'Something went wrong 😢',
         oldInput: {
           email: email,
           password: password,
@@ -208,21 +208,21 @@ exports.getReset = (req, res) => {
   let errorMessage = req.flash('error');
   errorMessage = errorMessage.length > 0 ? errorMessage[0] : undefined;
 
-  let sucessMessage = req.flash('sucess');
-  sucessMessage = sucessMessage.length > 0 ? sucessMessage[0] : undefined;
+  let successMessage = req.flash('success');
+  successMessage = successMessage.length > 0 ? successMessage[0] : undefined;
 
   res.render('auth/reset', {
     path: '/reset',
-    title: 'Reset Passowrd',
+    title: 'Reset Password',
     errorMessage: errorMessage,
-    sucessMessage: sucessMessage,
+    successMessage: successMessage,
   });
 };
 
 exports.postReset = (req, res, next) => {
   crypto.randomBytes(32, (err, buffer) => {
     if (err) {
-      req.flash('error', 'Somthing Went Wrong!');
+      req.flash('error', 'Something Went Wrong 😢');
       return res.redirect('/reset');
     }
 
@@ -231,7 +231,7 @@ exports.postReset = (req, res, next) => {
     User.findOne({ email: req.body.email })
       .then((user) => {
         if (!user) {
-          req.flash('error', 'NO user Found!');
+          req.flash('error', 'NO user found ❌');
           console.log('No user found');
           return res.redirect('/reset');
         }
@@ -241,11 +241,11 @@ exports.postReset = (req, res, next) => {
         return user.save();
       })
       .then(() => {
-        req.flash('sucess', 'Check Your Email for the next steps!');
+        req.flash('success', 'Check your email for the next steps 😎');
         res.redirect('/login');
 
         const mailOptions = {
-          from: 'nodeshopdevil08@gmail.com',
+          from: 'joelhernandezarg@gmail.com',
           to: req.body.email,
           subject: 'Reset Password',
           html: `
@@ -257,7 +257,7 @@ exports.postReset = (req, res, next) => {
         return transporter
           .sendMail(mailOptions)
           .then(() => {
-            console.log('Mail Send Sucessfully');
+            console.log('Mail send successfully 👍');
           })
           .catch((err) => {
             throw err;
@@ -279,14 +279,15 @@ exports.getResetPassword = (req, res, next) => {
       let errorMessage = req.flash('error');
       errorMessage = errorMessage.length > 0 ? errorMessage[0] : undefined;
 
-      let sucessMessage = req.flash('sucess');
-      sucessMessage = sucessMessage.length > 0 ? sucessMessage[0] : undefined;
+      let successMessage = req.flash('success');
+      successMessage =
+        successMessage.length > 0 ? successMessage[0] : undefined;
 
       res.render('auth/reset-password', {
         path: '/reset-password',
-        title: 'Reset Passowrd',
+        title: 'Reset Password',
         errorMessage: errorMessage,
-        sucessMessage: sucessMessage,
+        successMessage: successMessage,
         userId: user._id.toString(),
         passwordToken: token,
       });
@@ -311,7 +312,7 @@ exports.postResetPassword = (req, res, next) => {
   })
     .then((u) => {
       if (!u) {
-        req.flash('error', 'Somthing Went Wrong!');
+        req.flash('error', 'Something went wrong 😢');
         res.redirect('/reset');
       }
       user = u;
@@ -325,7 +326,7 @@ exports.postResetPassword = (req, res, next) => {
       return user.save();
     })
     .then(() => {
-      req.flash('sucess', 'Password Changed Sucessfully!');
+      req.flash('success', 'Password changed successfully 👍');
       res.redirect('/login');
     })
     .catch((err) => {

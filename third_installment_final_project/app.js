@@ -1,11 +1,9 @@
 const path = require('path');
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
-// const csrf = require('csurf');
 const flash = require('connect-flash');
 const multer = require('multer');
 
@@ -17,7 +15,6 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 // Creating the express app
 const app = express();
-// const csrfProtection = csrf();
 
 const fileStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -54,7 +51,6 @@ app.use(
   })
 );
 
-// app.use(csrfProtection);
 app.use(flash());
 
 const adminRoutes = require('./routes/admin');
@@ -92,7 +88,6 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
   res.locals.isAuthanticated = req.session.isLoggedIn;
-  // res.locals.csrfToken = req.csrfToken();
   next();
 });
 
@@ -109,15 +104,19 @@ app.use(errorController.get404);
 // 	res.redirect('/500');
 // });
 
+// Connections
 mongoose
-  .connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-  })
+  .connect(
+    MONGODB_URI,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    console.log('🔥 Connected to MongoDB')
+  )
   .then(() => {
     app.listen(process.env.PORT, () => {
-      console.log(`Server started at http://localhost:${process.env.PORT}`);
+      console.log(`🚀 Server started at http://localhost:${process.env.PORT}`);
     });
   })
   .catch((err) => {
